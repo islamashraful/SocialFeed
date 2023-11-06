@@ -1,10 +1,11 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import Title from './components/Title';
 
 const App = () => {
   return (
     <SafeAreaView>
-      <Text>Hello</Text>
+      <Title title="Let's Explore" />
     </SafeAreaView>
   );
 };
