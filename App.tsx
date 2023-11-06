@@ -13,6 +13,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {getFontFamily} from './assets/fonts/helper';
 import UserStory from './components/UserStory';
+import UserPost, {Post} from './components/UserPost';
 
 interface Story {
   id: number;
@@ -68,6 +69,64 @@ const USER_STORIES: Story[] = [
   },
 ];
 
+const USER_POSTS: Post[] = [
+  {
+    firstName: 'Allison',
+    lastName: 'Becker',
+    location: 'Boston, MA',
+    likes: 1201,
+    comments: 24,
+    bookmarks: 55,
+    id: 1,
+    image: require('./assets/images/default_post.png'),
+    profileImage: require('./assets/images/default_profile.png'),
+  },
+  {
+    firstName: 'Jennifer',
+    lastName: 'Wilkson',
+    location: 'Worcester, MA',
+    likes: 1301,
+    comments: 25,
+    bookmarks: 70,
+    id: 2,
+    image: require('./assets/images/default_post.png'),
+    profileImage: require('./assets/images/default_profile.png'),
+  },
+  {
+    firstName: 'Adam',
+    lastName: 'Spera',
+    location: 'Worcester, MA',
+    likes: 100,
+    comments: 8,
+    bookmarks: 3,
+    id: 3,
+    image: require('./assets/images/default_post.png'),
+    profileImage: require('./assets/images/default_profile.png'),
+  },
+  {
+    firstName: 'Nata',
+    lastName: 'Vacheishvili',
+    location: 'New York, NY',
+    likes: 200,
+    comments: 16,
+    bookmarks: 6,
+    id: 4,
+    image: require('./assets/images/default_post.png'),
+    profileImage: require('./assets/images/default_profile.png'),
+  },
+  {
+    firstName: 'Nicolas',
+    lastName: 'Namoradze',
+    location: 'Berlin, Germany',
+    likes: 2000,
+    comments: 32,
+    bookmarks: 12,
+    id: 5,
+    image: require('./assets/images/default_post.png'),
+    profileImage: require('./assets/images/default_profile.png'),
+  },
+];
+
 const USER_STORIES_PAGE_SIZE = 4;
 
 const App = () => {
@@ -94,40 +153,59 @@ const App = () => {
 
   return (
     <SafeAreaView>
-      <View style={styles.header}>
-        <Title title="Let's Explore" />
-        <TouchableOpacity style={styles.iconContainer}>
-          <FontAwesomeIcon icon={faEnvelope} color="#898dae" size={20} />
-          <View style={styles.messageNumberContainer}>
-            <Text style={styles.messageNumber}>9</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.userStoryContainer}>
+      <View>
         <FlatList
-          onEndReachedThreshold={0.5}
-          onEndReached={() => {
-            if (isLoading) {
-              return;
-            }
-            setIsLoading(true);
-            const contentsToAppend = pagination(USER_STORIES, currentPage + 1);
-            if (contentsToAppend.length) {
-              setCurrentPage(currentPage + 1);
-              setPaginatedData(prev => [...prev, ...contentsToAppend]);
-            }
-            setIsLoading(false);
-          }}
-          data={paginatedData}
-          renderItem={({item}) => (
-            <UserStory
-              firstName={item.firstName}
-              profileImage={item.profileImage}
-            />
-          )}
+          ListHeaderComponent={
+            <>
+              <View style={styles.header}>
+                <Title title="Let's Explore" />
+                <TouchableOpacity style={styles.iconContainer}>
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    color="#898dae"
+                    size={20}
+                  />
+                  <View style={styles.messageNumberContainer}>
+                    <Text style={styles.messageNumber}>9</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.userStoryContainer}>
+                <FlatList
+                  onEndReachedThreshold={0.5}
+                  onEndReached={() => {
+                    if (isLoading) {
+                      return;
+                    }
+                    setIsLoading(true);
+                    const contentsToAppend = pagination(
+                      USER_STORIES,
+                      currentPage + 1,
+                    );
+                    if (contentsToAppend.length) {
+                      setCurrentPage(currentPage + 1);
+                      setPaginatedData(prev => [...prev, ...contentsToAppend]);
+                    }
+                    setIsLoading(false);
+                  }}
+                  data={paginatedData}
+                  renderItem={({item}) => (
+                    <UserStory
+                      firstName={item.firstName}
+                      profileImage={item.profileImage}
+                    />
+                  )}
+                  keyExtractor={item => item.id.toString()}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                />
+              </View>
+            </>
+          }
+          data={USER_POSTS}
+          showsVerticalScrollIndicator={false}
+          renderItem={({item}) => <UserPost {...item} />}
           keyExtractor={item => item.id.toString()}
-          horizontal
-          showsHorizontalScrollIndicator={false}
         />
       </View>
     </SafeAreaView>
