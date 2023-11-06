@@ -1,8 +1,10 @@
 import {TextStyle} from 'react-native';
 
+type FontNames = 'Inter';
+
 // Making sure font will be shown correctly in windows and mac environment
 export const getFontFamily = (
-  baseFont: string = 'Inter',
+  baseFont: FontNames = 'Inter',
   weight: TextStyle['fontWeight'],
 ) => {
   switch (weight) {
