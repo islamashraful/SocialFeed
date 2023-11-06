@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   FlatList,
+  ImageSourcePropType,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -13,7 +14,13 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {getFontFamily} from './assets/fonts/helper';
 import UserStory from './components/UserStory';
 
-const USER_STORIES = [
+interface Story {
+  id: number;
+  firstName: string;
+  profileImage: ImageSourcePropType;
+}
+
+const USER_STORIES: Story[] = [
   {
     id: 1,
     firstName: 'Joseph',
@@ -61,7 +68,30 @@ const USER_STORIES = [
   },
 ];
 
+const USER_STORIES_PAGE_SIZE = 4;
+
 const App = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paginatedData, setPaginatedData] = useState<Story[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const pagination = (database: Story[], page: number) => {
+    const startIndex = (page - 1) * USER_STORIES_PAGE_SIZE;
+    const endIndex = startIndex + USER_STORIES_PAGE_SIZE;
+    if (startIndex >= database.length) {
+      return [];
+    }
+
+    return database.slice(startIndex, endIndex);
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+    const data = pagination(USER_STORIES, currentPage);
+    setPaginatedData(data);
+    setIsLoading(false);
+  }, []);
+
   return (
     <SafeAreaView>
       <View style={styles.header}>
@@ -75,7 +105,20 @@ const App = () => {
       </View>
       <View style={styles.userStoryContainer}>
         <FlatList
-          data={USER_STORIES}
+          onEndReachedThreshold={0.5}
+          onEndReached={() => {
+            if (isLoading) {
+              return;
+            }
+            setIsLoading(true);
+            const contentsToAppend = pagination(USER_STORIES, currentPage + 1);
+            if (contentsToAppend.length) {
+              setCurrentPage(currentPage + 1);
+              setPaginatedData(prev => [...prev, ...contentsToAppend]);
+            }
+            setIsLoading(false);
+          }}
+          data={paginatedData}
           renderItem={({item}) => (
             <UserStory
               firstName={item.firstName}
