@@ -1,8 +1,22 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# SocialFeed - React Native App
 
-# Getting Started
+SocialFeed is a simple mobile application developed with React Native that emulates the core features of a social media feed, similar to Instagram. It's designed to showcase the capabilities of React Native and demonstrates the implementation of some core features.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+This [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+
+# Features
+
+- **Custom Fonts:** The app utilizes the Inter font to enhance the user interface and typography.
+
+- **Large Dataset Handling:** SocialFeed efficiently handles large datasets by using the FlatList component, ensuring a smooth scrolling experience.
+
+- **Infinite Scrolling:** Implementing infinite scrolling allows users to load more content as they scroll through the feed, mimicking a real social media feed experience.
+
+- **Custom Pagination Hook:** The project includes a custom hook, `usePagination`, that offers flexibility for paginating large datasets. It can be easily configured to fit different use cases.
+
+# Let's Try to Run!
+
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -55,20 +69,7 @@ Now that you have successfully run the app, let's modify it.
 
    For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
+# Official Guide
 
 To learn more about React Native, take a look at the following resources:
 
