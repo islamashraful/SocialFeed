@@ -8,23 +8,24 @@ import {
   View,
 } from 'react-native';
 import Title from './components/Title';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
-import {getFontFamily} from './assets/fonts/helper';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { getFontFamily } from './assets/fonts/helper';
 import UserStory from './components/UserStory';
 import UserPost from './components/UserPost';
-import {USER_POSTS_PAGE_SIZE, USER_STORIES_PAGE_SIZE} from './utils/pagination';
-import {USER_POSTS, USER_STORIES} from './mocks';
+import {
+  USER_POSTS_PAGE_SIZE,
+  USER_STORIES_PAGE_SIZE,
+} from './utils/pagination';
+import { USER_POSTS, USER_STORIES } from './mocks';
 import usePagination from './hooks/usePagination';
 
 const App = () => {
-  const {data: stories, handleEndReached: handleEndReachedStories} =
+  const { data: stories, handleEndReached: handleEndReachedStories } =
     usePagination(USER_STORIES, USER_STORIES_PAGE_SIZE);
 
-  const {data: posts, handleEndReached: handleEndReachedPosts} = usePagination(
-    USER_POSTS,
-    USER_POSTS_PAGE_SIZE,
-  );
+  const { data: posts, handleEndReached: handleEndReachedPosts } =
+    usePagination(USER_POSTS, USER_POSTS_PAGE_SIZE);
 
   return (
     <SafeAreaView>
@@ -50,7 +51,7 @@ const App = () => {
                   onEndReachedThreshold={0.5}
                   onEndReached={handleEndReachedStories}
                   data={stories}
-                  renderItem={({item}) => (
+                  renderItem={({ item }) => (
                     <UserStory
                       firstName={item.firstName}
                       profileImage={item.profileImage}
@@ -67,7 +68,7 @@ const App = () => {
           onEndReached={handleEndReachedPosts}
           data={posts}
           showsVerticalScrollIndicator={false}
-          renderItem={({item}) => <UserPost {...item} />}
+          renderItem={({ item }) => <UserPost {...item} />}
           keyExtractor={item => item.id.toString()}
         />
       </View>

@@ -1,14 +1,20 @@
 import React from 'react';
-import {View, StyleSheet, ImageSourcePropType, Image, Text} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ImageSourcePropType,
+  Image,
+  Text,
+} from 'react-native';
 import UserProfileImage from '../UserProfileImage';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faBookmark,
   faHeart,
   faMessage,
 } from '@fortawesome/free-regular-svg-icons';
-import {faEllipsisH} from '@fortawesome/free-solid-svg-icons';
-import {getFontFamily} from '../../assets/fonts/helper';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { getFontFamily } from '../../assets/fonts/helper';
 
 export interface Post {
   firstName: string;

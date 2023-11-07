@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, StyleSheet, Text, ImageSourcePropType} from 'react-native';
-import {getFontFamily} from '../../assets/fonts/helper';
+import { View, StyleSheet, Text, ImageSourcePropType } from 'react-native';
+import { getFontFamily } from '../../assets/fonts/helper';
 import UserProfileImage from '../UserProfileImage';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   profileImage: ImageSourcePropType;
 }
 
-const UserStory = ({firstName, profileImage}: Props) => (
+const UserStory = ({ firstName, profileImage }: Props) => (
   <View style={styles.storyContainer}>
     <UserProfileImage profileImage={profileImage} imageDimension={65} />
     <Text style={styles.firstName}>{firstName}</Text>

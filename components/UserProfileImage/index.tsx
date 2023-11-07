@@ -1,16 +1,16 @@
 import React from 'react';
-import {View, StyleSheet, Image, ImageSourcePropType} from 'react-native';
+import { View, StyleSheet, Image, ImageSourcePropType } from 'react-native';
 
 interface Props {
   profileImage: ImageSourcePropType;
   imageDimension: number;
 }
 
-const UserProfileImage = ({profileImage, imageDimension}: Props) => (
-  <View style={[styles.imageContainer, {borderRadius: imageDimension}]}>
+const UserProfileImage = ({ profileImage, imageDimension }: Props) => (
+  <View style={[styles.imageContainer, { borderRadius: imageDimension }]}>
     <Image
       source={profileImage}
-      style={{width: imageDimension, height: imageDimension}}
+      style={{ width: imageDimension, height: imageDimension }}
     />
   </View>
 );

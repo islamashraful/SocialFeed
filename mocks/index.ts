@@ -1,5 +1,5 @@
-import {Post} from '../components/UserPost';
-import {Story} from '../models';
+import { Post } from '../components/UserPost';
+import { Story } from '../models';
 
 export const USER_STORIES: Story[] = [
   {

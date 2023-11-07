@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {pagination} from '../utils/pagination';
+import { useEffect, useState } from 'react';
+import { pagination } from '../utils/pagination';
 
 const usePagination = <T>(db: T[], pageSize: number) => {
   const [currentPage, setCurrentPage] = useState(1);
