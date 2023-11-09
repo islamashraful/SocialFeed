@@ -19,6 +19,11 @@ import {
 } from './utils/pagination';
 import { USER_POSTS, USER_STORIES } from './mocks';
 import usePagination from './hooks/usePagination';
+import {
+  horizontalScale,
+  scaleFontSize,
+  verticalScale,
+} from './styles/scaling';
 
 const App = () => {
   const { data: stories, handleEndReached: handleEndReachedStories } =
@@ -79,13 +84,13 @@ const App = () => {
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
-    marginHorizontal: 16,
-    marginTop: 30,
+    marginHorizontal: horizontalScale(16),
+    marginTop: verticalScale(30),
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   iconContainer: {
-    padding: 14,
+    padding: horizontalScale(14),
     backgroundColor: '#f9fafb',
     borderRadius: 100,
   },
@@ -93,21 +98,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#f35bac',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 14,
-    height: 14,
-    borderRadius: 8,
-    right: 6,
-    top: 6,
+    width: horizontalScale(14),
+    height: horizontalScale(14),
+    borderRadius: horizontalScale(8),
+    right: horizontalScale(6),
+    top: verticalScale(6),
     position: 'absolute',
   },
   messageNumber: {
     color: '#fff',
-    fontSize: 10,
+    fontSize: scaleFontSize(10),
     fontFamily: getFontFamily('Inter', '600'),
   },
   userStoryContainer: {
-    marginTop: 20,
-    marginHorizontal: 16,
+    marginTop: verticalScale(20),
+    marginHorizontal: horizontalScale(16),
   },
 });
 

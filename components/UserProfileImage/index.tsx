@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Image, ImageSourcePropType } from 'react-native';
+import { horizontalScale } from '../../styles/scaling';
 
 interface Props {
   profileImage: ImageSourcePropType;
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     borderWidth: 1,
     borderColor: '#f35bac',
-    padding: 3,
+    padding: horizontalScale(3),
     borderRadius: 65,
   },
 });

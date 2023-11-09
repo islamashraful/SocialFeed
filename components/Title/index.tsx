@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { getFontFamily } from '../../assets/fonts/helper';
+import { scaleFontSize } from '../../styles/scaling';
 
 interface Props {
   title: string;
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#022150',
     fontFamily: getFontFamily('Inter', '600'),
-    fontSize: 24,
+    fontSize: scaleFontSize(24),
   },
 });
 
